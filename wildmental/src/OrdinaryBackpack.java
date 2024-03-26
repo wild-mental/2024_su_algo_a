@@ -1,5 +1,7 @@
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.lang.reflect.Array;
+import java.util.Arrays;
 
 public class OrdinaryBackpack {
     public static void main(String[] args) throws Exception {
@@ -29,7 +31,10 @@ public class OrdinaryBackpack {
                 if (w[i-1] <= j) {
                     // 현재 물건을 넣을 수 있는 경우
                     dp[i][j] = Math.max(dp[i-1][j], dp[i-1][j-w[i-1]] + v[i-1]);
-                    // 이전 상태에서 현재 물건을 넣은 경우와 넣지 않은 경우 중 가치가 더 큰 것 선택
+                    for (int[] warr: dp) {
+                        System.out.println(Arrays.toString(warr));
+                    }
+                    System.out.println("----------------------------");
                 } else {
                     // 현재 물건을 넣을 수 없는 경우
                     dp[i][j] = dp[i-1][j]; // 이전 상태 그대로 가져옴
